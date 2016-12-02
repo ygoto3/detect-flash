@@ -1,6 +1,6 @@
 # detect-flash
 
-A library to detect if Adobe Flash plugin is really alive in a web browser.
+A library to detect if Adobe Flash plugin is really alive in a web browser
 
 This library actually runs a SWF file and then receives a signal from it.  Therefore, you can detect if Adobe Flash is actually available and working in the browser.
 
