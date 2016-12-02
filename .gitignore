@@ -1,0 +1,9 @@
+# OS X files
+.DS_Store
+Thumbs.db
+
+# Generated files
+npm-debug.log
+node_modules/
+lib/
+demo/lib/
