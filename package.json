@@ -35,6 +35,9 @@
     "eslint-config-airbnb": "^13.0.0",
     "eslint-plugin-import": "^2.2.0",
     "flex-sdk": "^4.6.0-0",
+    "simple-http-connect": "0.0.3"
+  },
+  "dependencies": {
     "swfobject": "^2.2.1"
   }
 }
