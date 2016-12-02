@@ -13,6 +13,10 @@ function clear(el) {
 
 export default function detectFlash(swfPath) {
   return new Promise((resolve, reject) => {
+    if (!navigator.plugins["Shockwave Flash"]) {
+      reject();
+      return;
+    }
     const el = document.createElement('DIV');
     const wrapper = el.cloneNode();
 
