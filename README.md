@@ -25,8 +25,8 @@ import detectFlash from 'detect-flash';
 
 detectFlash('path-to-swf/FlashDetector.swf')
   .then(
-    () => message('flash is alive.'),
-    err => message('flash is not alive.')
+    () => console.log('flash is alive.'),
+    err => console.log('flash is not alive.')
   );
 ```
 
