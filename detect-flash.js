@@ -11,7 +11,13 @@ function clear(el) {
   delete window[CALLBACK];
 };
 
-export default function detectFlash(swfPath) {
+/**
+ * Detects if Adobe Flash is actually alive in a browser
+ * @param {string} swfPath - The path to FlashDetector.swf
+ * @param {number} [timeout=TIMEOUT(1000)] The milliseconds of your detection timeout
+ * @returns {Promise} Returns a Promise object which is resolved only when Flash plugin is alive
+ */
+export default function detectFlash(swfPath, timeout = TIMEOUT) {
   return new Promise((resolve, reject) => {
     if (!navigator.plugins["Shockwave Flash"]) {
       reject();
@@ -27,7 +33,7 @@ export default function detectFlash(swfPath) {
     const timeoutId = setTimeout(() => {
       clear(wrapper, el.id);
       reject();
-    }, TIMEOUT);
+    }, timeout);
 
     window[CALLBACK] = function () {
       clearTimeout(timeoutId);

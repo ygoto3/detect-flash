@@ -9,10 +9,10 @@ const CALLBACK = `${ID}_call`;
 
 const dummyFlash = {};
 
-function makeFlashFound() {
+function makeFlashFound(timeout = TIMEOUT) {
   setTimeout(() => {
     window[CALLBACK]();
-  }, TIMEOUT / 2);
+  }, timeout / 2);
 }
 
 test('detectFlash in case flash is not installed', t => {
@@ -37,4 +37,14 @@ test('detectFlash in case flash is alive', t => {
     .then(() => t.pass('Flash should be found when flash is alive.'));
 
   makeFlashFound();
+});
+
+test('detectFlash in case flash is alive, but it takes a longer time to detect it', t => {
+  t.plan(1);
+
+  const to = TIMEOUT * 5;
+  detectFlash('dummy-path', to)
+    .then(() => t.pass('Flash should be found when flash is alive.'));
+
+  makeFlashFound(to / 2);
 });

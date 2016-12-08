@@ -18,7 +18,7 @@ $ npm install detect-flash --save
 
 ## Usage
 
-Pass the path to FlashDetector.swf and detect-flash returns a promise;  It is resolved only if Adobe Flash Plugin is actually alive.
+Pass the path to FlashDetector.swf and detect-flash returns a Promise object.  It is resolved only if Adobe Flash Plugin is actually alive.
 
 ```javascript
 import detectFlash from 'detect-flash';
@@ -28,6 +28,18 @@ detectFlash('path-to-swf/FlashDetector.swf')
     () => console.log('flash is alive.'),
     err => console.log('flash is not alive.')
   );
+```
+
+`detect-flash` waits until FlashDetector.swf returns a signal that Adobe Flash is alive, or `detect-flash` considers Flash plugin to be blocked if it times out.  Timeout for detection can be passed as the second argument.  The default value for timeout is `1000` milliseconds.
+
+```javascript
+// Set 3 seconds to timeout
+detectFlash('path-to-swf/FlashDetector.swf', 3000)
+  .catch(err => {
+    console.log(
+      'flash does not seems alive because detectFlash() did not receive the signal for 3 seconds.'
+    );
+  });
 ```
 
 ## Try a Demo
