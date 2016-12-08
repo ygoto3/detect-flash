@@ -37,7 +37,7 @@ detectFlash('path-to-swf/FlashDetector.swf')
 detectFlash('path-to-swf/FlashDetector.swf', 3000)
   .catch(err => {
     console.log(
-      'flash does not seems alive because detectFlash() did not receive the signal for 3 seconds.'
+      'flash does not seem alive because detectFlash() did not receive the signal in 3 seconds.'
     );
   });
 ```
