@@ -10,7 +10,8 @@
     "build": "babel detect-flash.js --out-dir lib --source-maps inline && npm run build-swf",
     "build-swf": "mxmlc --output=lib/FlashDetector.swf FlashDetector.as",
     "demo": "npm run build && cp -r lib demo && browserify demo/demo.js -o demo/lib/demo.js && simple-http-connect -p 8000 -d demo",
-    "test": "browserify detect-flash-test.js -t [ babelify --plugins [ es6-promise ] ] | tape-run -b phantom | faucet"
+    "test": "browserify detect-flash-test.js -t [ babelify --plugins [ es6-promise ] ] | tape-run -b phantom | faucet",
+    "lint": "eslint detect-flash.js detect-flash-test.js"
   },
   "repository": {
     "type": "git",
@@ -35,6 +36,8 @@
     "eslint": "^3.11.1",
     "eslint-config-airbnb": "^13.0.0",
     "eslint-plugin-import": "^2.2.0",
+    "eslint-plugin-jsx-a11y": "2.2.3",
+    "eslint-plugin-react": "^6.8.0",
     "faucet": "0.0.1",
     "flex-sdk": "^4.6.0-0",
     "phantom": "^3.2.0",

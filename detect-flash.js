@@ -1,5 +1,3 @@
-'use strict';
-
 import swfobject from 'swfobject';
 
 const TIMEOUT = 1000;
@@ -9,7 +7,7 @@ const CALLBACK = `${ID}_call`;
 function clear(el) {
   document.body.removeChild(el);
   delete window[CALLBACK];
-};
+}
 
 /**
  * Detects if Adobe Flash is actually alive in a browser
@@ -19,7 +17,7 @@ function clear(el) {
  */
 export default function detectFlash(swfPath, timeout = TIMEOUT) {
   return new Promise((resolve, reject) => {
-    if (!navigator.plugins["Shockwave Flash"]) {
+    if (!navigator.plugins['Shockwave Flash']) {
       reject();
       return;
     }
@@ -35,7 +33,7 @@ export default function detectFlash(swfPath, timeout = TIMEOUT) {
       reject();
     }, timeout);
 
-    window[CALLBACK] = function () {
+    window[CALLBACK] = function callbackFromFlashDetector() {
       clearTimeout(timeoutId);
       setTimeout(() => clear(wrapper), 0);
       resolve();

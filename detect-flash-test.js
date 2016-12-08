@@ -1,5 +1,3 @@
-'use strict';
-
 import test from 'tape';
 import detectFlash from './detect-flash';
 
@@ -15,22 +13,22 @@ function makeFlashFound(timeout = TIMEOUT) {
   }, timeout / 2);
 }
 
-test('detectFlash in case flash is not installed', t => {
+test('detectFlash in case flash is not installed', (t) => {
   t.plan(1);
 
   detectFlash('dummy-path')
     .catch(() => t.pass('No flash sould be found when flash is not installed.'));
 });
 
-test('detectFlash in case flash is installed but blocked', t => {
+test('detectFlash in case flash is installed but blocked', (t) => {
   t.plan(1);
 
-  navigator.plugins["Shockwave Flash"] = dummyFlash;
+  navigator.plugins['Shockwave Flash'] = dummyFlash;
   detectFlash('dummy-path')
     .catch(() => t.pass('No flash sould be found when flash is installed but blocked.'));
 });
 
-test('detectFlash in case flash is alive', t => {
+test('detectFlash in case flash is alive', (t) => {
   t.plan(1);
 
   detectFlash('dummy-path')
@@ -39,7 +37,7 @@ test('detectFlash in case flash is alive', t => {
   makeFlashFound();
 });
 
-test('detectFlash in case flash is alive, but it takes a longer time to detect it', t => {
+test('detectFlash in case flash is alive, but it takes a longer time to detect it', (t) => {
   t.plan(1);
 
   const to = TIMEOUT * 5;
