@@ -1,15 +1,16 @@
 {
   "name": "detect-flash",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "A library to detect if Adobe Flash plugin is really alive in a web browser",
   "main": "lib/detect-flash.js",
   "files": [
     "lib"
   ],
   "scripts": {
-    "build": "babel detect-flash.js --out-dir lib --source-maps inline && npm run build-swf",
+    "init": "yarn global add phantomjs",
+    "build": "babel detect-flash.js --out-dir lib --source-maps inline && yarn build-swf",
     "build-swf": "mxmlc --output=lib/FlashDetector.swf FlashDetector.as",
-    "demo": "npm run build && cp -r lib demo && browserify demo/demo.js -o demo/lib/demo.js && simple-http-connect -p 8000 -d demo",
+    "demo": "yarn build && cp -r lib demo && browserify demo/demo.js -o demo/lib/demo.js && simple-http-connect -p 8000 -d demo",
     "test": "browserify detect-flash-test.js -t [ babelify --plugins [ es6-promise ] ] | tape-run -b phantom | faucet",
     "lint": "eslint detect-flash.js detect-flash-test.js"
   },
@@ -29,6 +30,7 @@
   },
   "homepage": "https://github.com/ygoto3/flash-detector#readme",
   "devDependencies": {
+    "babel-cli": "^6.24.0",
     "babel-plugin-es6-promise": "^1.0.0",
     "babel-preset-es2015": "^6.18.0",
     "babelify": "^7.3.0",
@@ -40,7 +42,6 @@
     "eslint-plugin-react": "^6.8.0",
     "faucet": "0.0.1",
     "flex-sdk": "^4.6.0-0",
-    "phantom": "^3.2.0",
     "simple-http-connect": "0.0.3",
     "tape": "^4.6.3",
     "tape-run": "^2.1.4"

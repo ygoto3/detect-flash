@@ -15,7 +15,7 @@ function clear(el) {
  * @param {number} [timeout=TIMEOUT(1000)] The milliseconds of your detection timeout
  * @returns {Promise} Returns a Promise object which is resolved only when Flash plugin is alive
  */
-export default function detectFlash(swfPath, timeout = TIMEOUT) {
+export function detectFlash(swfPath, timeout = TIMEOUT) {
   return new Promise((resolve, reject) => {
     if (!navigator.plugins['Shockwave Flash']) {
       reject();
@@ -42,3 +42,5 @@ export default function detectFlash(swfPath, timeout = TIMEOUT) {
     swfobject.embedSWF(swfPath, el.id, '0', '0', '10.0.0');
   });
 }
+
+export default detectFlash;

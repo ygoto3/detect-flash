@@ -1,5 +1,5 @@
 import test from 'tape';
-import detectFlash from './detect-flash';
+import df, { detectFlash } from './detect-flash';
 
 const TIMEOUT = 1000;
 const ID = '__flash_detector';
@@ -12,6 +12,12 @@ function makeFlashFound(timeout = TIMEOUT) {
     window[CALLBACK]();
   }, timeout / 2);
 }
+
+test('export', (t) => {
+  t.plan(1);
+
+  t.equal(df, detectFlash, 'should export detectFlash as default');
+});
 
 test('detectFlash in case flash is not installed', (t) => {
   t.plan(1);
