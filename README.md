@@ -1,3 +1,5 @@
+[![npm version](https://badge.fury.io/js/detect-flash.svg)](https://badge.fury.io/js/detect-flash)
+
 # detect-flash
 
 A library to detect if Adobe Flash plugin is really alive in a web browser
