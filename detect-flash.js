@@ -39,7 +39,7 @@ export function detectFlash(swfPath, timeout = TIMEOUT) {
       resolve();
     };
 
-    swfobject.embedSWF(swfPath, el.id, '0', '0', '10.0.0');
+    swfobject.embedSWF(swfPath, el.id, '10', '10', '10.0.0');
   });
 }
 
