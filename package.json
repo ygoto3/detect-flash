@@ -1,6 +1,6 @@
 {
   "name": "detect-flash",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "description": "A library to detect if Adobe Flash plugin is really alive in a web browser",
   "main": "lib/detect-flash.js",
   "files": [
