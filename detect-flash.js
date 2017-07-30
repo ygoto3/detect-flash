@@ -25,6 +25,9 @@ export function detectFlash(swfPath, timeout = TIMEOUT) {
     const wrapper = el.cloneNode();
 
     el.id = ID;
+    wrapper.style.left = '-9999px';
+    wrapper.style.top = '-9999px';
+    wrapper.style.position = 'absolute';
     wrapper.appendChild(el);
     document.body.appendChild(wrapper);
 
@@ -39,7 +42,7 @@ export function detectFlash(swfPath, timeout = TIMEOUT) {
       resolve();
     };
 
-    swfobject.embedSWF(swfPath, el.id, '0', '0', '10.0.0');
+    swfobject.embedSWF(swfPath, el.id, '10', '10', '10.0.0');
   });
 }
 
